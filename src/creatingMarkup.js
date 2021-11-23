@@ -1,6 +1,6 @@
 import refs from "./refs";
 
-function creatingMarkup(data, elem = refs.gallery) {
+function creatingMarkup(data/*, elem = gallery*/) {
   console.log(data);
   const { hits } = data;
   console.log(hits);
@@ -27,8 +27,12 @@ function creatingMarkup(data, elem = refs.gallery) {
     `;
     },
   );
-  console.log(refs[elem]);
-  refs[elem].innerHTML = markup.join(''); // refs.gallery.innerHTML = markup;
+  
+  /*
+  refs[elem].innerHTML = markup.join('');
+  */
+
+  refs.gallery.innerHTML = markup.join('');
 }
 
 export default creatingMarkup;

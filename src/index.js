@@ -8,8 +8,10 @@ import Notiflix from 'notiflix';
 
 function handleSubmit(e) {
   e.preventDefault();
+
   const { searchQuery } = e.currentTarget.elements;
-  const search = searchQuery;
+  const search = searchQuery.value;
+  console.log(typeof search);
 
   query(`${search}`)
     .then(creatingMarkup)

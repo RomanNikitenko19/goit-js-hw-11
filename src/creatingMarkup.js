@@ -1,7 +1,10 @@
 import refs from "./refs";
 
-function creatingMarkup(data, elem) {
-  const markup = data.map(
+function creatingMarkup(data, elem = refs.gallery) {
+  console.log(data);
+  const { hits } = data;
+  console.log(hits);
+  const markup = hits.map(
     ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
         <div class="photo-card">
@@ -24,7 +27,8 @@ function creatingMarkup(data, elem) {
     `;
     },
   );
-  refs{elem}.innerHTML = markup; // refs.gallery.innerHTML = markup;
+  console.log(refs[elem]);
+  refs[elem].innerHTML = markup.join(''); // refs.gallery.innerHTML = markup;
 }
 
 export default creatingMarkup;

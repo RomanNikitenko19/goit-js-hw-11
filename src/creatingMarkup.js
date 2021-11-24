@@ -4,8 +4,8 @@ function creatingMarkup(data/*, elem = gallery*/) {
   console.log(data);
   const { hits } = data;
   console.log(hits);
-  const markup = hits.map(
-    ({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
+  const markup = hits
+    .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
         <div class="photo-card">
           <img src="${webformatURL}" alt="${tags}" loading="lazy" />
@@ -25,14 +25,14 @@ function creatingMarkup(data/*, elem = gallery*/) {
           </div>
         </div>
     `;
-    },
-  );
-  
+    })
+    .join('');
+
   /*
   refs[elem].innerHTML = markup.join('');
   */
-
-  refs.gallery.innerHTML = markup.join('');
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  //refs.gallery.innerHTML = markup;
 }
 
 export default creatingMarkup;

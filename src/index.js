@@ -5,21 +5,35 @@ import creatingMarkup from './creatingMarkup';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import Notiflix from 'notiflix';
+import axios from 'axios';
 
-function handleSubmit(e) {
-  e.preventDefault();
+let total = 1;
+let search = '';
+  //refs.buttonLoadMore.style.display = 'none';
 
-  const { searchQuery } = e.currentTarget.elements;
-  const search = searchQuery.value;
-  console.log(typeof search);
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  query(`${search}`)
-    .then(creatingMarkup)
-    .catch(
-      Notiflix.Notify.warning(
-        'Sorry, there are no images matching your search query. Please try again.',
-      ),
-    );
+    const { searchQuery } = e.currentTarget.elements;
+    search = searchQuery.value;
+
+    query(total,`${search}`)
+      .then(data => {
+        creatingMarkup(data);
+        //refs.buttonLoadMore.style.display = 'inline-block';
+      })
+      .catch(
+        Notiflix.Notify.warning(
+          'Sorry, there are no images matching your search query. Please try again.',
+        ),
+      );
+  };
+
+function handleClick() {
+  total += 1;
+  console.log(total);
+  query(total,`${search}`)
+    .then(creatingMarkup(data));
 }
-
 refs.form.addEventListener('submit', handleSubmit);
+refs.buttonLoadMore.addEventListener('click', handleClick);

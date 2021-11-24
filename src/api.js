@@ -1,3 +1,4 @@
+require('dotenv').config();
 import axios from 'axios';
 
 const BASE_URL = 'https://pixabay.com/api/?key=';

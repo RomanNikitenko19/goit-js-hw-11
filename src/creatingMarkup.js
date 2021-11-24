@@ -1,14 +1,15 @@
 import refs from "./refs";
 
 function creatingMarkup(data/*, elem = gallery*/) {
-  console.log(data);
+  //console.log(data);
   const { hits } = data;
-  console.log(hits);
+  //console.log(hits);
   const markup = hits
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
-        <div class="photo-card">
-          <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+      <div class="photo-card">
+        <a href="${largeImageURL}">
+          <img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
           <div class="info">
             <p class="info-item">
               <b>${likes}</b>
@@ -23,7 +24,7 @@ function creatingMarkup(data/*, elem = gallery*/) {
               <b>${downloads}</b>
             </p>
           </div>
-        </div>
+      </div>
     `;
     })
     .join('');

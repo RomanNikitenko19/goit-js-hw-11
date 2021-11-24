@@ -1,48 +1,70 @@
-// .example {
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-//     'Open Sans', 'Helvetica Neue', sans-serif;
-//   line-height: 1.5;
-//   background-color: #fff;
-//   color: #424242;
-//   max-width: 960px;
-//   padding: 16px;
-// }
-
-// .example code {
-//   font-family: monospace;
-//   font-size: 16px;
-//   font-weight: 700;
-//   background-color: #009688;
-//   color: #fff;
-//   padding: 2px 6px;
-//   border-radius: 2px;
-// }
-
-// .example .background {
-//   height: 240px;
-//   // Путь к изображениям из SASS-файла всегда такой, как из папки css
-//   background-image: url('../images/demo.jpg');
-//   background-size: cover;
-//   background-position: center;
-// }
 body {
-  background-color: yellowgreen;
+  background-color: grey;
+  list-style: none;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+.container {
+  max-width: 90%;
+  padding-top: 0.2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 0.2rem;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+form {
+  max-width: 33.3%;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 0 auto;
+}
+
+input {
+font-size: 2rem;
+padding: 0.1rem;
+text-align: left;
+border-radius: 0.4rem;
+padding-left: 0.8rem;
+padding-bottom: 0.4rem;
+}
+
+button {
+  border-radius: 0.4rem;
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap
+  position: relative;
+  display: flex;
+  flex-wrap: wrap
+  //overflow: hidden;
 }
-.load-more {
-  margin: 0 auto;
-  display: inline-block;
-  min-width: 200px;
-  padding-top: 10px;
-  padding-right: 22px;
-  padding-bottom: 10px;
-  padding-left: 22px;
 
-  border-radius: 4px;
+.photo-card{
+  display: block;
+  flex: 33.3%;
+  border: 0.4rem solid  ghostwhite ;
+  //overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.load-more {
+  margin: 0.4rem auto;
+  display: block;
+  min-width: 33.3%;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+
+  cursor: pointer;
+  font-size: 1rem;
   text-align: center;
 }
 

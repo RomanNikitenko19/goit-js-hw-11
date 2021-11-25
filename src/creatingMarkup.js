@@ -1,9 +1,7 @@
 import refs from "./refs";
 
-function creatingMarkup(data/*, elem = gallery*/) {
-  //console.log(data);
+function creatingMarkup(data, elem = refs.gallery) {
   const { hits } = data;
-  //console.log(hits);
   const markup = hits
     .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
       return `
@@ -29,11 +27,7 @@ function creatingMarkup(data/*, elem = gallery*/) {
     })
     .join('');
 
-  /*
-  refs[elem].innerHTML = markup.join('');
-  */
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
-  //refs.gallery.innerHTML = markup;
+  elem.insertAdjacentHTML('beforeend', markup);
 }
 
 export default creatingMarkup;

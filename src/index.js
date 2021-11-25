@@ -1,6 +1,6 @@
 require('dotenv').config();
 import './sass/main.scss';
-import { query, BASE_URL, API_KEY } from './api';
+import { query  } from './api';
 import refs from './refs';
 import creatingMarkup from './creatingMarkup';
 import SimpleLightbox from 'simplelightbox';
@@ -18,7 +18,7 @@ async function handleSubmit(e) {
   e.preventDefault();
 
   const { searchQuery } = e.currentTarget.elements;
-  search = searchQuery.value;
+  search = searchQuery.value.trim();
 
   try {
     const data = await query(total, `${search}`);
@@ -57,7 +57,7 @@ function handleSubmit(e) {
 //async await
 async function handleClick() {
   total += 1;
-  search = refs.input.value;
+  search = refs.input.value.trim();
 
   try {
     const data = await query(total, `${search}`);
@@ -67,6 +67,17 @@ async function handleClick() {
       refs.buttonLoadMore.style.display = 'block';
       gallery.refresh();
       Notiflix.Notify.info(`infoHooray! We found ${data.totalHits} images.`);
+
+      //scroll
+      const { height: cardHeight } = document
+        .querySelector('.gallery')
+        .firstElementChild.getBoundingClientRect();
+
+      window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth',
+      });
+
     } else {
       Notiflix.Notify.warning('Were sorry, but youve reached the end of search results.');
       refs.buttonLoadMore.style.display = 'none';
